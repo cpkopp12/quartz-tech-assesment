@@ -46,21 +46,27 @@ const dataList = getData();
 
 // html elements
 const mainEls = document.querySelector("#main-els");
+const mainElsRow = document.createElement("div");
+mainElsRow.setAttribute("class","row");
+mainEls.appendChild(mainElsRow);
+
+
 
 //function to load data card
-var loadDataCard = function() {
+var loadDataCard = function(cardIndex) {
 
-    console.log(dataList);
+
     //create card element
     var cardEl = document.createElement("div");
-    cardEl.setAttribute("class","card");
+    cardEl.setAttribute("class","card m-2");
+    cardEl.setAttribute("style","width: 18rem")
 
     //name as card header
     var cardName = document.createElement("div");
     cardName.setAttribute("class","card-header");
-    cardName.innerHTML = dataList[0].name;
+    cardName.innerHTML = dataList[cardIndex].name;
 
-    cardEl.appendChild(cardName);
+    
 
     //rest of card data as unordered list
     var ulEl = document.createElement("ul");
@@ -68,39 +74,46 @@ var loadDataCard = function() {
     
     var idEl = document.createElement("li");
     idEl.setAttribute("class","list-group-item");
-    idEl.innerHTML = "Id: " + dataList[0].id;
+    idEl.innerHTML = "Id: " + dataList[cardIndex].id;
     ulEl.appendChild(idEl);
 
     var cityEl = document.createElement("li");
     cityEl.setAttribute("class","list-group-item");
-    cityEl.innerHTML = "City: " + dataList[0].city;
+    cityEl.innerHTML = "City: " + dataList[cardIndex].city;
     ulEl.appendChild(cityEl);
 
     var stateEl = document.createElement("li");
     stateEl.setAttribute("class","list-group-item");
-    stateEl.innerHTML = "State: " + dataList[0].state;
+    stateEl.innerHTML = "State: " + dataList[cardIndex].state;
     ulEl.appendChild(stateEl);
 
     var animalEl = document.createElement("li");
     animalEl.setAttribute("class","list-group-item");
-    animalEl.innerHTML = "Favorite Animal: " + dataList[0].favoriteAnimal;
+    animalEl.innerHTML = "Favorite Animal: " + dataList[cardIndex].favoriteAnimal;
     ulEl.appendChild(animalEl);
 
     var colorEl = document.createElement("li");
     colorEl.setAttribute("class","list-group-item");
-    colorEl.innerHTML = "FavoriteColor: " + dataList[0].favoriteColor;
+    colorEl.innerHTML = "Favorite Color: " + dataList[cardIndex].favoriteColor;
     ulEl.appendChild(colorEl);
 
     
-    
-
+    //append name and rest of data to the card element
+    cardEl.appendChild(cardName);
     cardEl.appendChild(ulEl);
 
-
-
-
-
-    mainEls.appendChild(cardEl);
+    //append the card element to the bootstrap container
+    mainElsRow.appendChild(cardEl);
 
 }
-loadDataCard();
+
+var loadAllDataCards = function() {
+
+    //loop through cards by index
+    for (let i=0; i<dataList.length; i++) {
+        loadDataCard(i);
+    }
+
+}
+
+loadAllDataCards();
