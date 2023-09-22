@@ -161,7 +161,7 @@ var formSubmitHandler = function(event){
     searchInputEl.value = '';
 };
 
-
+//show all btn handler function
 var showAllClickHandler = function(event) {
     event.preventDefault();
 
