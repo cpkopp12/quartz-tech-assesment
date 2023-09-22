@@ -13,12 +13,23 @@
 </head>
 
 <body>
-    <header>
-       
-    </header>
-
    
     <main>
+
+        <!-- container for search box -->
+        <div class="container">
+            <form id="search">
+                <div class="form-group" >
+                    <label for="search-name">Search Data By Name</label>
+                    <input type="text" class="form-control" id="search-name" aria-describedby="description" placeholder="Enter Name">
+                    <small id="description" class="form-text text-muted">Search is case sensitive.</small>
+                </div>
+                <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
+            
+                <button type="button" class="btn btn-primary" id="show-all-data-btn">Show All Data</button>
+            </form>
+        </div>
+
         <!-- container to hold data from getData()-->
         <div class="container" id="main-els">
 
